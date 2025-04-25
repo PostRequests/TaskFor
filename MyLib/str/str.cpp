@@ -32,6 +32,27 @@ str& str::cat(const char* s) {
 	}
 	return *this;
 }
+str& str::cat(const char s) {
+	if (s) {
+		size_t n_len = len + 1;
+		char* n = new char[n_len + 1];
+		strcpy_s(n, n_len + 1, this->s);
+		n[n_len - 2] = s;
+		n[n_len - 1] = '\0';
+		clear();
+		this->s = n;
+		this->len = n_len;
+	}
+	return *this;
+}
+str& str::copy(const char c) {
+		clear();
+		len = 2;
+		s = new char[len];
+		s[0] = c;
+		s[1] = '\0';
+		return *this;
+}
 str& str::operator+(int p) {
 	static char m[1024]{};
 	sprintf_s(m, "%i", p);

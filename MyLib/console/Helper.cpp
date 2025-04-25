@@ -1,6 +1,6 @@
 #include "Helper.h"
 
-bool includeContainsOnly(char* text, const char* content) {
+bool includeContainsOnly(const char* text, const char* content) {
     if (!*text) return false;
     for (; (*text); text++) {
         bool include = false;

@@ -1,25 +1,39 @@
 ﻿
 #include <iostream>
+#include "MyLib/str/str.h"
 #include "NumSet.h"
+
 
 int main()
 {
-    NumSet m{25};
-    NumSet m2{112};
-    std::cout << (str)m;
-    (m2 += m).add(2);
-    m.add(6).add(8);
-    
-    NumSet m3;
-    m3 += m2;
-    m3 += m;
-    m3 += (NumSet)12;
-    m3 += (int)32;
-    m3 += 23;
+    NumSet m1{"3, 8, 46, 5, 11"};
+    NumSet m2;
+    std::cout << "Сложение/добавление элементов \n";
+    std::cout << m1 << " + 4 = " << m1.add(4) << '\n';
+    std::cout << m1 << " + 3 = " << m1.add(3) << '\n';
+    std::cout << "Введите множество для сложения пример: 2 3 41 23\n";
+    std::cin >> m2;
+    std::cout << m1 << " + " << m2 << " = " << m1 + m2 << '\n';
 
-    m3.show();
-    m2.show();
+    //NumSet any2;
+    //std::cin >> any2;
+    //any2.show();
+    //std::cin >> any2;
+    //any2.show();
+    //NumSet any{ "-1234 -123-4.12" };
+    //std::cout << any;
+    //NumSet m{125 };
+    //NumSet m2{112};
+    ////std::cin >> (str)m;
+    //std::cout << m << "sfdes";
+    /*m.add(6).add(8);
+    m2.add(6).add(8).show();
+    m.show();
+    (m / m2).show();*/
+    //m.show();
+
     //std::cout << (m == m2);
     //std::cout << m.include(6);
 }
+
 

@@ -7,7 +7,7 @@
 /// <param name="text">Проверяемый текст</param>
 /// <param name="content">Разрешённые символы</param>
 /// <returns>True, если все символы из text присутствуют в content, иначе false</returns>
-bool includeContainsOnly(char* text, const char* content);
+bool includeContainsOnly(const char* text, const char* content);
 /// <summary>
 /// Преобразует текст в число (нужна предварительная проверка bool isNumber(char* text))
 /// </summary>
