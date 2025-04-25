@@ -133,6 +133,10 @@ std::ostream& operator << (std::ostream& o,  NumSet& s) {
 	o << (str)s;
 	return o;
 }
+std::ostream& operator << (std::ostream& o, NumSet& s) {
+	o << (str)s;
+	return o;
+}
 std::istream& operator >> (std::istream& o, NumSet& s) {
 	o.clear();
 	const int limitSymbol = 1024;

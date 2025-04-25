@@ -45,5 +45,5 @@ public:
 };
 
 std::ostream& operator << (std::ostream& o, NumSet& s);
-std::istream& operator >> (std::istream& o, const NumSet& s);
+std::istream& operator >> (std::istream& o, NumSet& s);
 //std::ostream& operator << (std::ostream& o, NumSet s);
