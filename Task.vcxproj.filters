@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Исходные файлы">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Файлы заголовков">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Файлы ресурсов">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Исходные файлы\MyLib">
+      <UniqueIdentifier>{61a0d478-cbcf-449f-a42e-f6b738848736}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\MyLib\str">
+      <UniqueIdentifier>{352dcf55-070e-4aa9-ae0b-64b0b14cf939}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\MyLib\console">
+      <UniqueIdentifier>{b02b3e76-7ab1-43aa-8020-8c6d5cceadd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Исходные файлы\MyLib\Menu">
+      <UniqueIdentifier>{b2f581f3-cb6d-4ed9-b2b2-216659cec9c0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Main.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLib\str\str.cpp">
+      <Filter>Исходные файлы\MyLib\str</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLib\console\DrawChars.cpp">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLib\console\Helper.cpp">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLib\console\Key.cpp">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLib\Menu\Menu.cpp">
+      <Filter>Исходные файлы\MyLib\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="NumSet.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="MyLib\str\str.h">
+      <Filter>Исходные файлы\MyLib\str</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\console\ANSI.h">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\console\Console.h">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\console\DrawChars.h">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\console\Helper.h">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\console\Key.h">
+      <Filter>Исходные файлы\MyLib\console</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\Menu\Menu.h">
+      <Filter>Исходные файлы\MyLib\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="NumSet.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
