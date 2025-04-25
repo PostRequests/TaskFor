@@ -64,3 +64,7 @@ str& str::input(){
 	std::cin >> m;
 	return copy(m);
 }
+std::ostream& operator << (std::ostream& o, const str& s) {
+	o << (char*)s;
+	return o;
+}

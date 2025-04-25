@@ -52,3 +52,4 @@ public:
 	~str() {clear();}
 };
 
+std::ostream& operator << (std::ostream& o, const str& s);

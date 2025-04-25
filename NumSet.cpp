@@ -123,7 +123,7 @@ NumSet& NumSet::copy(const int* n, int s) {
 	return *this;
 }
 
-str NumSet::output() {
+ str const NumSet::output() {
 	str r{ ((numSet) ? "[" : "[ ]") };
 	for (int i = 0; i < size; i++)
 		r + numSet[i] + ((i < size - 1) ? ", " : "]");
@@ -133,10 +133,7 @@ std::ostream& operator << (std::ostream& o,  NumSet& s) {
 	o << (str)s;
 	return o;
 }
-std::ostream& operator << (std::ostream& o, NumSet& s) {
-	o << (str)s;
-	return o;
-}
+
 std::istream& operator >> (std::istream& o, NumSet& s) {
 	o.clear();
 	const int limitSymbol = 1024;

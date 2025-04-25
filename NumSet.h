@@ -7,9 +7,11 @@ class NumSet
 private:
 	int* numSet;
 	int size;
-	str output();
+	str const output();
 	
 public:
+	
+
 	NumSet() : numSet(nullptr), size(0) {}
 	NumSet(int n) : numSet(), size(1) { copy(n); }
 	NumSet(const char* s) { strToNumSet(s); }
@@ -46,4 +48,4 @@ public:
 
 std::ostream& operator << (std::ostream& o, NumSet& s);
 std::istream& operator >> (std::istream& o, NumSet& s);
-//std::ostream& operator << (std::ostream& o, NumSet s);
+//std::ostream& operator << (std::ostream& o, const NumSet& s);
