@@ -14,7 +14,7 @@ bool includeContainsOnly(const char* text, const char* content) {
     }
     return true;
 }
-bool isNumber(char* text) {
+inline bool isNumber(char* text) {
     return includeContainsOnly(text, "1234567890-");
 }
 int strToInt(char* num) {

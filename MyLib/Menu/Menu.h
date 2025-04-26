@@ -13,13 +13,13 @@ private:
 	int cur;//Текущий выбранный номер элемента
 	int count;//Количество всех элементов
 	int width;//Ширина меню
-	bool visible = false;//Отображает видимость юеню на экране
+	bool visible = false;//Отображает видимость меню на экране
 	int cb = RedBG;//Цвет выделения
 	std::string head;//Заголовок меню
 	std::vector<std::string> elMenu;//Названия элементов меню
 	std::vector<std::function<void()>> func;//Функции вызываемые при нажатии 
 
-	//Добавляем к вектору елемент менб
+	//Добавляем к вектору элемент меню
 	void strToVector(std::string s) { if(!s.empty()) elMenu.push_back(s); }
 	//Добавляем к вектору функцию
 	void functionToVector(std::function<void()> f) { if (f) func.push_back(f); }
@@ -42,8 +42,8 @@ public:
 		functionToVector(f);
 	}
 	Menu(int x, int y, std::string h) :Menu(x, y, 0, 0, 0, h, "", nullptr) {}
-	//Добавляемт элемент меню к меню
-	Menu& addItem(std::string el) { return addItem(el, [](){}); }
+	//Добавляем элемент меню к меню
+	inline Menu& addItem(std::string el) { return addItem(el, [](){}); }
 	Menu& addItem(std::string el, std::function<void()> f);
 	//Устанавливаем шапку меню
 	Menu& setHead(std::string h);

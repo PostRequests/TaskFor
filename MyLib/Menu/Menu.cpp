@@ -16,8 +16,7 @@ Menu& Menu::setHead(std::string h) {
 	return*this;
 }
 void Menu::printElMenu() {
-	for (int i = 0; i < count; i++)
-	{
+	for (int i = 0; i < count; i++) {
 		setCursorPosition(posX + 1, posY + 3 + i * 2);
 		centerWord(elMenu[i].data(), width - 1);
 	}

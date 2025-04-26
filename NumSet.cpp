@@ -38,23 +38,18 @@ NumSet& NumSet::copy(const NumSet& o) {
 	}
 	return *this;
 }
-NumSet& NumSet::add(int n) {
-	if (!include(n)) {
-		int* t = new int[size + 1];
-		for (int i = 0; i < size; i++)
-			t[i] = numSet[i];
-		t[size] = n;
-		int s = size + 1;
-		clear();
-		size = s;
-		numSet = t;
-	}
-	return *this;
-}
-
 NumSet& NumSet::add(const NumSet& o) {
 	for (int i = 0; i < o.size; i++)
-		add(o.numSet[i]);
+		if (!include(o.numSet[i])) {
+			int* t = new int[size + 1];
+			for (int i = 0; i < size; i++)
+				t[i] = numSet[i];
+			t[size] = o.numSet[i];
+			int s = size + 1;
+			clear();
+			size = s;
+			numSet = t;
+		}
 	return *this;
 }
 NumSet& NumSet::show() {
@@ -67,7 +62,7 @@ NumSet NumSet::operator+(const NumSet& o) {
 	return result;
 }
 NumSet& NumSet::operator-=(const NumSet& o) {
-	//Ћишн€€ пам€ть остаетс€ в конце
+	//Ћишн€€ пам€ть остаетс€ в конце 
 	if (!numSet || !o.numSet) return *this;
 	int newSize = 0;
 	int* temp = new int[size];
@@ -123,13 +118,26 @@ NumSet& NumSet::copy(const int* n, int s) {
 	return *this;
 }
 
- str const NumSet::output() {
+ str const NumSet::conclusion() {
 	str r{ ((numSet) ? "[" : "[ ]") };
 	for (int i = 0; i < size; i++)
 		r + numSet[i] + ((i < size - 1) ? ", " : "]");
 	return r;
 }
-std::ostream& operator << (std::ostream& o,  NumSet& s) {
+
+NumSet& NumSet::copy(const char* s) {
+	clear();
+	for (int i = 0; s[i] != '\0'; i++) 
+		if (strchr("-1234567890", s[i])) {
+			str num{s[i]};
+			while (s[i++] && strchr("1234567890", s[i]))
+				num.cat(s[i]) ;
+			add(strToInt(num));
+		}
+	return *this;
+}
+
+std::ostream& operator << (std::ostream& o, NumSet& s) {
 	o << (str)s;
 	return o;
 }
@@ -139,17 +147,6 @@ std::istream& operator >> (std::istream& o, NumSet& s) {
 	const int limitSymbol = 1024;
 	char* r = new char[limitSymbol];
 	o.getline(r, limitSymbol);
-	s.strToNumSet(r);
+	s.copy(r);
 	return o;
-}
-void NumSet::strToNumSet(const char* s) {
-	clear();
-	for (int i = 0; s[i] != '\0'; i++) {
-		if (strchr("-1234567890", s[i])) {
-			str num{s[i]};
-			while (s[i++] and strchr("1234567890", s[i]))
-				num.cat(s[i]) ;
-			add(strToInt(num));
-		}
-	}
 }
