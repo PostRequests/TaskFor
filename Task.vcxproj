@@ -130,6 +130,7 @@
     <ClCompile Include="MyLib\console\DrawChars.cpp" />
     <ClCompile Include="MyLib\console\Helper.cpp" />
     <ClCompile Include="MyLib\console\Key.cpp" />
+    <ClCompile Include="MyLib\Date\Date.cpp" />
     <ClCompile Include="MyLib\Menu\Menu.cpp" />
     <ClCompile Include="MyLib\str\str.cpp" />
     <ClCompile Include="NumSet.cpp" />
@@ -141,6 +142,7 @@
     <ClInclude Include="MyLib\console\DrawChars.h" />
     <ClInclude Include="MyLib\console\Helper.h" />
     <ClInclude Include="MyLib\console\Key.h" />
+    <ClInclude Include="MyLib\Date\Date.h" />
     <ClInclude Include="MyLib\Menu\Menu.h" />
     <ClInclude Include="MyLib\str\str.h" />
     <ClInclude Include="NumSet.h" />

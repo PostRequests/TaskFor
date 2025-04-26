@@ -25,6 +25,9 @@
     <Filter Include="Исходные файлы\MyLib\Menu">
       <UniqueIdentifier>{b2f581f3-cb6d-4ed9-b2b2-216659cec9c0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Исходные файлы\MyLib\Date">
+      <UniqueIdentifier>{8e594ccf-0b79-4041-bd84-f53f6993e5d8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -47,6 +50,9 @@
     </ClCompile>
     <ClCompile Include="NumSet.cpp">
       <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MyLib\Date\Date.cpp">
+      <Filter>Исходные файлы\MyLib\Date</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -73,6 +79,9 @@
     </ClInclude>
     <ClInclude Include="NumSet.h">
       <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MyLib\Date\Date.h">
+      <Filter>Исходные файлы\MyLib\Date</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

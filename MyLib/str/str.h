@@ -12,6 +12,10 @@ public:
 	str() : s(nullptr), len(0) {};
 	str(const char* s) : str() {copy(s);}
 	str(const char s) : str() { copy(s); }
+	//Оператор складывания строк
+	str& operator+(const char* s) { return cat(s); }
+	str& operator+(const char s) { return cat(s); }
+	str& operator+=(const str& s) { return cat(s); }
 	//Конструктор копирования
 	str(const str& o) :str() { copy(o);	}
 	//Оператор присвоения
@@ -34,10 +38,7 @@ public:
 	str& cat(const char* s);	
 	str& cat(const char s);
 	str& cat(const str o) {	return cat(o.s);}
-	//Оператор складывания строк
-	str& operator+(const char* s) {	return cat(s);}
-	str& operator+(const char s) { return cat(s); }
-	str& operator+=(const str& s) { return cat(s); }
+	
 	//Оператор складывание строки и целочисленного числа
 	str& operator+(int p);
 	str& input();
