@@ -132,7 +132,6 @@
     <ClCompile Include="MyLib\console\Key.cpp" />
     <ClCompile Include="MyLib\Date\Date.cpp" />
     <ClCompile Include="MyLib\Menu\Menu.cpp" />
-    <ClCompile Include="MyLib\str\str.cpp" />
     <ClCompile Include="NumSet.cpp" />
     <ClCompile Include="Main.cpp" />
   </ItemGroup>
@@ -144,7 +143,6 @@
     <ClInclude Include="MyLib\console\Key.h" />
     <ClInclude Include="MyLib\Date\Date.h" />
     <ClInclude Include="MyLib\Menu\Menu.h" />
-    <ClInclude Include="MyLib\str\str.h" />
     <ClInclude Include="NumSet.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

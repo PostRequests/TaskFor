@@ -1,59 +1,56 @@
 #include "NumSet.h"
-NumSet& NumSet::clear() {
-	if (numSet) {
-		delete[] numSet;
-		numSet = nullptr;
-		size = 0;
-	}
+
+NumSet& NumSet::copy(int n) {
+	numSet.clear();
+	numSet.push_back(n);
 	return *this;
 }
-NumSet& NumSet::copy(int n) {
-	clear();
-	numSet = new int[1] {n};
-	size = 1;
+NumSet& NumSet::copy(const NumSet& o) {
+	if (this == &o) return *this;
+	numSet = o.numSet;
+	return *this;
+}
+NumSet& NumSet::copy(const int* n, int s) {
+	for (int i = 0; i < s; i++)
+		add(n[i]);
+	return *this;
+}
+NumSet& NumSet::copy(const std::string& s) {
+	for (int i = 0; i < s.size(); i++)
+		if (s[i] == '-' || isdigit(s[i])) {
+			std::string num;
+			if (s[i] == '-') {
+				num += '-';
+				i++;
+			}
+			while (i < s.size() && isdigit(s[i])) 
+				num += s[i++];
+			
+			add(std::stoi(num));
+		}
+	return *this;
+}
+NumSet& NumSet::add(const NumSet& o) {
+	for (int i = 0; i < o.numSet.size(); i++)
+		if (!include(o.numSet[i])) 
+			numSet.push_back(o.numSet[i]);
 	return *this;
 }
 bool NumSet::include(int n) {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < numSet.size(); i++)
 		if (numSet[i] == n) return true;
 	return false;
 }
 
 bool NumSet::include(const NumSet& o) {
-	if (o.size != size) return false;
-	if (!o.numSet || !numSet) return o.numSet == numSet;
-	for (int i = 0; i < size; i++)
+	if (o.numSet.size() != numSet.size()) return false;
+	for (int i = 0; i < numSet.size(); i++)
 		if (!include(o.numSet[i]))
 			return false;
 	return true;
 }
-NumSet& NumSet::copy(const NumSet& o) {
-	if (this == &o) return *this;
-	clear();
-	if (o.numSet) {
-		numSet = new int[o.size];
-		for (int i = 0; i < o.size; i++)
-			numSet[i] = o.numSet[i];
-		size = o.size;
-	}
-	return *this;
-}
-NumSet& NumSet::add(const NumSet& o) {
-	for (int i = 0; i < o.size; i++)
-		if (!include(o.numSet[i])) {
-			int* t = new int[size + 1];
-			for (int i = 0; i < size; i++)
-				t[i] = numSet[i];
-			t[size] = o.numSet[i];
-			int s = size + 1;
-			clear();
-			size = s;
-			numSet = t;
-		}
-	return *this;
-}
 NumSet& NumSet::show() {
-	std::cout << (str)*this << std::endl;
+	std::cout << *this << std::endl;
 	return * this;
 }
 NumSet NumSet::operator+(const NumSet& o) {
@@ -62,35 +59,24 @@ NumSet NumSet::operator+(const NumSet& o) {
 	return result;
 }
 NumSet& NumSet::operator-=(const NumSet& o) {
-	//Ћишн€€ пам€ть остаетс€ в конце 
-	if (!numSet || !o.numSet) return *this;
-	int newSize = 0;
-	int* temp = new int[size];
-	for (int i = 0; i < size; i++) {
-		bool found = false;
-		for (int j = 0; j < o.size; j++) 
+	if (numSet.empty() || o.numSet.empty()) return *this;
+	for (int i = 0; i < numSet.size(); i++) {
+		for (int j = 0; j < o.numSet.size(); j++)
 			if (numSet[i] == o.numSet[j]) {
-				found = true;
+				numSet.erase(numSet.begin() + i);
 				break;
 			}
-		if (!found) 
-			temp[newSize++] = numSet[i];
 	}
-	delete[] numSet;
-	numSet = temp;
-	size = newSize;
 	return *this;
 }
-
 NumSet NumSet::operator-(const NumSet& o) {
 	NumSet r{ *this };
 	r -= o;
 	return r;
 }
-
 NumSet NumSet::operator*(const NumSet& o) {
 	NumSet r;
-	for (int i = 0; i < o.size; i++)
+	for (int i = 0; i < o.numSet.size(); i++)
 		if (include(o.numSet[i]))
 			r.add(o.numSet[i]);
 	return r;
@@ -102,7 +88,7 @@ NumSet& NumSet::operator*=(const NumSet& o) {
 }
 NumSet NumSet::operator/(const NumSet& o) {
 	NumSet r;
-	for (int i = 0; i < o.size; i++)
+	for (int i = 0; i < o.numSet.size(); i++)
 		if (!include(o.numSet[i]))
 			r.add(o.numSet[i]);
 	return r;
@@ -112,41 +98,19 @@ NumSet& NumSet::operator/=(const NumSet& o) {
 	*this = r * o;
 	return  *this;
 }
-NumSet& NumSet::copy(const int* n, int s) {
-	for (int i = 0; i < s; i++)
-		add(n[i]);
-	return *this;
-}
-
- str const NumSet::conclusion() {
-	str r{ ((numSet) ? "[" : "[ ]") };
-	for (int i = 0; i < size; i++)
-		r + numSet[i] + ((i < size - 1) ? ", " : "]");
+ std::string NumSet::conclusion() {
+	std::string r{ ((numSet.empty()) ? "[ ]" : "[") };
+	for (int i = 0; i < numSet.size(); i++)
+		r += std::to_string(numSet[i]) + ((i < numSet.size() - 1) ? ", " : "]");
 	return r;
 }
-
-NumSet& NumSet::copy(const char* s) {
-	clear();
-	for (int i = 0; s[i] != '\0'; i++) 
-		if (strchr("-1234567890", s[i])) {
-			str num{s[i]};
-			while (s[i++] && strchr("1234567890", s[i]))
-				num.cat(s[i]) ;
-			add(strToInt(num));
-		}
-	return *this;
-}
-
-std::ostream& operator << (std::ostream& o, NumSet& s) {
-	o << (str)s;
+std::ostream& operator << (std::ostream& o, NumSet s) {
+	o << std::string(s);
 	return o;
 }
-
 std::istream& operator >> (std::istream& o, NumSet& s) {
-	o.clear();
-	const int limitSymbol = 1024;
-	char* r = new char[limitSymbol];
-	o.getline(r, limitSymbol);
-	s.copy(r);
+	std::string n;
+	std::getline(o, n);
+	s.copy(n);
 	return o;
 }

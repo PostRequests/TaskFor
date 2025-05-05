@@ -1,14 +1,12 @@
 ﻿
 #include <iostream>
-#include "MyLib/str/str.h"
 #include "NumSet.h"
 #include <string>
-
 
 int main()
 {
     system("chcp 1251>nul");
-    NumSet m1{ "3, 8, 46, 5, 11" };
+    NumSet m1{ 3, 8, 46, 5, 11 };
     NumSet m2;
     std::cout << "Сложение/добавление элементов \n";
     std::cout << m1 << " + 4 = " << (m1 + 4) << '\n';

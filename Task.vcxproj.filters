@@ -16,9 +16,6 @@
     <Filter Include="Исходные файлы\MyLib">
       <UniqueIdentifier>{61a0d478-cbcf-449f-a42e-f6b738848736}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\MyLib\str">
-      <UniqueIdentifier>{352dcf55-070e-4aa9-ae0b-64b0b14cf939}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Исходные файлы\MyLib\console">
       <UniqueIdentifier>{b02b3e76-7ab1-43aa-8020-8c6d5cceadd1}</UniqueIdentifier>
     </Filter>
@@ -32,9 +29,6 @@
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="MyLib\str\str.cpp">
-      <Filter>Исходные файлы\MyLib\str</Filter>
     </ClCompile>
     <ClCompile Include="MyLib\console\DrawChars.cpp">
       <Filter>Исходные файлы\MyLib\console</Filter>
@@ -56,9 +50,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyLib\str\str.h">
-      <Filter>Исходные файлы\MyLib\str</Filter>
-    </ClInclude>
     <ClInclude Include="MyLib\console\ANSI.h">
       <Filter>Исходные файлы\MyLib\console</Filter>
     </ClInclude>
