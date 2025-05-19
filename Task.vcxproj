@@ -104,6 +104,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,23 +128,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="MyLib\console\DrawChars.cpp" />
-    <ClCompile Include="MyLib\console\Helper.cpp" />
-    <ClCompile Include="MyLib\console\Key.cpp" />
-    <ClCompile Include="MyLib\Date\Date.cpp" />
-    <ClCompile Include="MyLib\Menu\Menu.cpp" />
-    <ClCompile Include="NumSet.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="MinElement.cpp" />
+    <ClCompile Include="MyClass\Box\Box.cpp" />
+    <ClCompile Include="MyClass\Color\Color.cpp" />
+    <ClCompile Include="MyClass\KeyBoard\KeyBoard.cpp" />
+    <ClCompile Include="MyClass\Menu\ItemM.cpp" />
+    <ClCompile Include="MyClass\Menu\Menu.cpp" />
+    <ClCompile Include="MyClass\Menu\MenuItem.cpp" />
+    <ClCompile Include="MyClass\Position\Position.cpp" />
+    <ClCompile Include="Task.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyLib\console\ANSI.h" />
-    <ClInclude Include="MyLib\console\Console.h" />
-    <ClInclude Include="MyLib\console\DrawChars.h" />
-    <ClInclude Include="MyLib\console\Helper.h" />
-    <ClInclude Include="MyLib\console\Key.h" />
-    <ClInclude Include="MyLib\Date\Date.h" />
-    <ClInclude Include="MyLib\Menu\Menu.h" />
-    <ClInclude Include="NumSet.h" />
+    <ClInclude Include="MinElement.h" />
+    <ClInclude Include="MyClass\Box\Box.h" />
+    <ClInclude Include="MyClass\Color\Color.h" />
+    <ClInclude Include="MyClass\KeyBoard\KeyBoard.h" />
+    <ClInclude Include="MyClass\Menu\ItemM.h" />
+    <ClInclude Include="MyClass\Menu\Menu.h" />
+    <ClInclude Include="MyClass\Menu\MenuItem.h" />
+    <ClInclude Include="MyClass\Position\Position.h" />
+    <ClInclude Include="Task.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

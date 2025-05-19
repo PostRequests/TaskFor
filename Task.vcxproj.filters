@@ -13,66 +13,72 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Исходные файлы\MyLib">
-      <UniqueIdentifier>{61a0d478-cbcf-449f-a42e-f6b738848736}</UniqueIdentifier>
+    <Filter Include="Исходные файлы\MyClass">
+      <UniqueIdentifier>{1fa0f080-b621-4666-9201-d50b9066b358}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Исходные файлы\MyLib\console">
-      <UniqueIdentifier>{b02b3e76-7ab1-43aa-8020-8c6d5cceadd1}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\MyLib\Menu">
-      <UniqueIdentifier>{b2f581f3-cb6d-4ed9-b2b2-216659cec9c0}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Исходные файлы\MyLib\Date">
-      <UniqueIdentifier>{8e594ccf-0b79-4041-bd84-f53f6993e5d8}</UniqueIdentifier>
+    <Filter Include="Исходные файлы\MyClass\Menu">
+      <UniqueIdentifier>{26f4ca3e-28ef-4060-b1bc-b0f704a3bc10}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MyLib\console\DrawChars.cpp">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClCompile Include="MyClass\Box\Box.cpp">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClCompile>
-    <ClCompile Include="MyLib\console\Helper.cpp">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClCompile Include="MyClass\Color\Color.cpp">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClCompile>
-    <ClCompile Include="MyLib\console\Key.cpp">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClCompile Include="MyClass\KeyBoard\KeyBoard.cpp">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClCompile>
-    <ClCompile Include="MyLib\Menu\Menu.cpp">
-      <Filter>Исходные файлы\MyLib\Menu</Filter>
+    <ClCompile Include="MyClass\Position\Position.cpp">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClCompile>
-    <ClCompile Include="NumSet.cpp">
+    <ClCompile Include="MinElement.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="MyLib\Date\Date.cpp">
-      <Filter>Исходные файлы\MyLib\Date</Filter>
+    <ClCompile Include="Task.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="MyClass\Menu\MenuItem.cpp">
+      <Filter>Исходные файлы\MyClass\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MyClass\Menu\Menu.cpp">
+      <Filter>Исходные файлы\MyClass\Menu</Filter>
+    </ClCompile>
+    <ClCompile Include="MyClass\Menu\ItemM.cpp">
+      <Filter>Исходные файлы\MyClass\Menu</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="MyLib\console\ANSI.h">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClInclude Include="MyClass\Box\Box.h">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClInclude>
-    <ClInclude Include="MyLib\console\Console.h">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClInclude Include="MyClass\Color\Color.h">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClInclude>
-    <ClInclude Include="MyLib\console\DrawChars.h">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClInclude Include="MyClass\KeyBoard\KeyBoard.h">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClInclude>
-    <ClInclude Include="MyLib\console\Helper.h">
-      <Filter>Исходные файлы\MyLib\console</Filter>
+    <ClInclude Include="MyClass\Position\Position.h">
+      <Filter>Исходные файлы\MyClass</Filter>
     </ClInclude>
-    <ClInclude Include="MyLib\console\Key.h">
-      <Filter>Исходные файлы\MyLib\console</Filter>
-    </ClInclude>
-    <ClInclude Include="MyLib\Menu\Menu.h">
-      <Filter>Исходные файлы\MyLib\Menu</Filter>
-    </ClInclude>
-    <ClInclude Include="NumSet.h">
+    <ClInclude Include="MinElement.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="MyLib\Date\Date.h">
-      <Filter>Исходные файлы\MyLib\Date</Filter>
+    <ClInclude Include="Task.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="MyClass\Menu\MenuItem.h">
+      <Filter>Исходные файлы\MyClass\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MyClass\Menu\Menu.h">
+      <Filter>Исходные файлы\MyClass\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="MyClass\Menu\ItemM.h">
+      <Filter>Исходные файлы\MyClass\Menu</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
