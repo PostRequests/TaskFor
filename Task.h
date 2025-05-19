@@ -3,8 +3,16 @@
 class Task
 {
 private:
-	Box x;
 public:
 	void run(); 
+
+	//вспомогательные методы
+
+	/// <summary>
+	/// Переводит вектор в строку 
+	/// </summary>
+	/// <param name="v">Одномерный вектор</param>
+	 template <typename T>
+	 static std::string toStr(std::vector<T>& v);
 };
 

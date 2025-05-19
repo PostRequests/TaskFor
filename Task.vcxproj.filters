@@ -51,6 +51,18 @@
     <ClCompile Include="MyClass\Menu\ItemM.cpp">
       <Filter>Исходные файлы\MyClass\Menu</Filter>
     </ClCompile>
+    <ClCompile Include="Factorial.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="Equal.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="To866.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
+    <ClCompile Include="To1251.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyClass\Box\Box.h">
@@ -79,6 +91,18 @@
     </ClInclude>
     <ClInclude Include="MyClass\Menu\ItemM.h">
       <Filter>Исходные файлы\MyClass\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Factorial.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="Equal.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="To866.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="To1251.h">
+      <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

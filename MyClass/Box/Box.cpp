@@ -29,8 +29,8 @@ Box& Box::drawBox() {
     if (colT.getBG() != BlackBG) {
         cur.setY(end.getY() - 1);
         cls();
-        cur.restart();
     }
+    cur.restart();
     return*this;
 }
 void Box::drawFillBox(int xs, int ys, int xe, int ye) {
@@ -69,7 +69,7 @@ Box& Box::print(const std::string& s) {
     colT.colorize();
     cur.go();//Перемещаем курсор в начальную позицию
     std::vector<std::string> words = splitWord(s);//Разбиваем текст на слова и переносы строк
-    int col = 0;//Текущая позиция в строке
+    int col = cur.getX() - start.getMinX();//Текущая позиция в строке
     const int lineWidth = end.getX() - start.getX() - 1;//Ширина
     for (std::string& word : words) {
         if (word == "\n") {

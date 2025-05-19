@@ -3,13 +3,13 @@ Color& Color::setFG(int FG){
 	if (this->FG == FG) return *this;
 	if (FG < BlackFG || FG > WhiteFG) return *this;
 	this->FG = FG;
-	return colorize();
+	return *this;
 }
 Color& Color::setBG(int BG) {
 	if (this->BG == BG) return *this;
 	if (BG < BlackBG || BG > WhiteBG) return *this;
 	this->BG = BG;
-	return colorize();
+	return *this;
 }
 Color& Color::setColor(int BG, int FG) {
 	setBG(BG);
