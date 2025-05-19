@@ -1,104 +1,57 @@
 #include "Task.h"
-#include "MinElement.h"
-#include "Factorial.h"
-#include "Equal.h"
-#include "To866.h"
-#include "To1251.h"
+#include "IntVector.h"
 void Task::run() {
 	Menu m;
 	Position e;
 	e.setConsoleSize();
 	//Задание 11.1
-	m.addItem("Задание 11.1", 
+	m.addItem("Задание 12.1", 
 		[&m] {
-			std::vector<int> a;
-			for (int i = 0; i < 10; i++)
-				a.push_back(rand()% 100);
-			m.clsBox();
-			m.printBox("Сгенерирован случайный массив : \n" + toStr(a) + "\n");
-			MinElement Imin; //Функтор нахождения минимального элемента
-			m.printBox("Минимальный элемент массива : " + std::to_string(Imin(a)) + "\n");
+			std::string a, b;
+			m.clsBox()
+				.printBox("Введите делимое число : ");
+			std::getline(std::cin, a);
+			m.printBox("\nВведите делитель : ");
+			std::getline(std::cin, b);
+			try {
+				int result = std::stoi(a) % std::stoi(b);
+				m.printBox("\nОстаток от деления: " + std::to_string(result));
+			}
+			catch (...) {
+				m.printBox("\nОшибка: попытка деления на ноль!");
+			}
 		},
 		[&m] {
 			m.clsBox()
-				.printBox("Написать функтор и продемонстрировать его использование для нахождения наименьшего значения в массиве.");
+				.printBox("Настроить проект на обработку исключений с SEH исключениями (/EHa). Написать программу, которая запрашивает у пользователя два числа и выполняет операцию нахождения остатка от деления. С помощью конструкции try-catch отловить ошибку при выполнении данной операции для нахождения остатка от деления на 0.");
 		}
 	);
 	//Задание 11.2
-	m.addItem("Задание 11.2",
+	m.addItem("Задание 12.2",
 		[&m] {
-			int n = rand() % 10;
-			Factorial b;//Функтор нахождения факториала числа
-			m.clsBox().
-				printBox("Факториал числа " + std::to_string(n) + " = " + std::to_string(b(n)));
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Написать функтор и продемонстрировать его использование для вычисления факториала числа.");
-		}
-	);
-	//Задание 11.3
-	m.addItem("Задание 11.3",
-		[&m] {
-			std::string s1, s2;
-			Equal e; //Функтор производящий ставнение
-			m.clsBox()
-				.printBox("Введите две строки для сравнения \n");
-			m.printBox("Первая строка : \n");
-			std::getline(std::cin, s1);
-			m.printBox("\nВторая строка : \n");
-			std::getline(std::cin, s2);
-			if (e(s1,s2)){
-				m.printBox("\nОбе строки одинаковые \n");
+			IntVector v;
+			for (int i = 0; i < 10; i++)
+				v.addNumber(rand() % 20);
+			v.addNumber(30);
+			m.clsBox().printBox("Числа в векторе :" + v.toStrig() + "\n");
+			try {
+				int findNum = 30;
+				int i = v.findNumber(findNum);
+				m.printBox("Число " + std::to_string(findNum) + " найдено на позиции " + std::to_string(i) + "\n");
+				findNum = 12;
+				i = v.findNumber(findNum);
+				m.printBox("Число " + std::to_string(findNum) + " найдено на позиции " + std::to_string(i) + "\n");
 			}
-			else {
-				m.printBox("\nСтроки разные \n");
+			catch(MyError& er){
+				m.printBox("Ошибка!!! :" + er.what());
 			}
 		},
 		[&m] {
 			m.clsBox()
-				.printBox("Написать предикат и продемонстрировать его использование для проверки на равенство двух строк..");
+				.printBox("Написать класс для обработки исключительных ситуаций наследуясь от базового класса std::exception. Написать класс для хранения ряда целых числе. Реализовать в классе метод поиска числа в ряду. Если поиск завершается неудачей должно генерироваться исключение. В функции main продемонстрируйте работу класса и обработайте ситуацию поиска числа, которого нет в ряде чисел.");
 		}
 	);
-	//Задание 11.4
-	m.addItem("Задание 11.4",
-		[&m] {
-			m.clsBox();
-			system("chcp 1251>nul");
-			m.printBox("Текущая кодировка 1251.\nВведите текст\n");
-			std::string s;
-			To866 l;
-			std::getline(std::cin, s);
-			system("chcp 866>nul");
-			m.printBox(l("Кодировка изменена на 866\n"));
-			m.printBox(l("Текст в 1251 кодировке : ") + s + "\n");
-			m.printBox(l("Текст в 866 кодировке : ") + l(s));
-			system("chcp 1251>nul");
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Написать функтор и продемонстрировать его использование для смены кодировки сроки символов из 1251 в 866.");
-		}
-	);
-	//Задание 11.5
-	m.addItem("Задание 11.5",
-		[&m] {
-			m.clsBox();
-			m.printBox("Текущая кодировка 866.\nВведите текст\n");
-			system("chcp 866>nul");
-			std::string s;
-			To1251 l;
-			std::getline(std::cin, s);
-			system("chcp 1251>nul");
-			m.printBox("Кодировка изменена на 1251\n");
-			m.printBox("Текст в 866 кодировке : " + s + "\n");
-			m.printBox("Текст в 1251 кодировке : " + l(s));
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Написать функтор и продемонстрировать его использование для смены кодировки сроки символов из 866 в 1251.");
-		}
-	);
+	
 	m.addItem("Выход", [] {exit(0); }, [&m] {m.clsBox(); });
 	m.setBox(m.getWidth() + 3, 1, e.getX(), e.getY());
 	std::cout << m.run();

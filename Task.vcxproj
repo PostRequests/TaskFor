@@ -105,6 +105,7 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <ExceptionHandling>Async</ExceptionHandling>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -128,10 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Equal.cpp" />
-    <ClCompile Include="Factorial.cpp" />
+    <ClCompile Include="IntVector.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="MinElement.cpp" />
     <ClCompile Include="MyClass\Box\Box.cpp" />
     <ClCompile Include="MyClass\Color\Color.cpp" />
     <ClCompile Include="MyClass\KeyBoard\KeyBoard.cpp" />
@@ -139,14 +138,11 @@
     <ClCompile Include="MyClass\Menu\Menu.cpp" />
     <ClCompile Include="MyClass\Menu\MenuItem.cpp" />
     <ClCompile Include="MyClass\Position\Position.cpp" />
+    <ClCompile Include="MyError.cpp" />
     <ClCompile Include="Task.cpp" />
-    <ClCompile Include="To1251.cpp" />
-    <ClCompile Include="To866.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Equal.h" />
-    <ClInclude Include="Factorial.h" />
-    <ClInclude Include="MinElement.h" />
+    <ClInclude Include="IntVector.h" />
     <ClInclude Include="MyClass\Box\Box.h" />
     <ClInclude Include="MyClass\Color\Color.h" />
     <ClInclude Include="MyClass\KeyBoard\KeyBoard.h" />
@@ -154,9 +150,8 @@
     <ClInclude Include="MyClass\Menu\Menu.h" />
     <ClInclude Include="MyClass\Menu\MenuItem.h" />
     <ClInclude Include="MyClass\Position\Position.h" />
+    <ClInclude Include="MyError.h" />
     <ClInclude Include="Task.h" />
-    <ClInclude Include="To1251.h" />
-    <ClInclude Include="To866.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

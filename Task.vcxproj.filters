@@ -36,9 +36,6 @@
     <ClCompile Include="MyClass\Position\Position.cpp">
       <Filter>Исходные файлы\MyClass</Filter>
     </ClCompile>
-    <ClCompile Include="MinElement.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
     <ClCompile Include="Task.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
@@ -51,16 +48,10 @@
     <ClCompile Include="MyClass\Menu\ItemM.cpp">
       <Filter>Исходные файлы\MyClass\Menu</Filter>
     </ClCompile>
-    <ClCompile Include="Factorial.cpp">
+    <ClCompile Include="MyError.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Equal.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="To866.cpp">
-      <Filter>Исходные файлы</Filter>
-    </ClCompile>
-    <ClCompile Include="To1251.cpp">
+    <ClCompile Include="IntVector.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -77,9 +68,6 @@
     <ClInclude Include="MyClass\Position\Position.h">
       <Filter>Исходные файлы\MyClass</Filter>
     </ClInclude>
-    <ClInclude Include="MinElement.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
     <ClInclude Include="Task.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
@@ -92,16 +80,10 @@
     <ClInclude Include="MyClass\Menu\ItemM.h">
       <Filter>Исходные файлы\MyClass\Menu</Filter>
     </ClInclude>
-    <ClInclude Include="Factorial.h">
+    <ClInclude Include="MyError.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Equal.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="To866.h">
-      <Filter>Файлы заголовков</Filter>
-    </ClInclude>
-    <ClInclude Include="To1251.h">
+    <ClInclude Include="IntVector.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
