@@ -69,23 +69,25 @@ void Menu::printElMenu() {
 		start.setY(start.getX()  + i * 2)
 			.printLn(elem[i].getHead());
 	}
-	cH.colorize();
+	сSelected.colorize();
 	start.setY(start.getX() + cur)
 		.print(elem[cur].getHead());
-	cH.reset();
+	сSelected.reset();
 	start.restart();
 }
 void Menu::show() {
 	visible = true;
-	Box::drawBox(start.getX() - 1,
+	cDefault.colorize();//Задаем основной цвет меню
+	Box::drawBox(start.getX() - 1, //Печатаем квадрат, где будет распологаться меню
 		start.getY() - 1,
 		start.getX() + width,
 		start.getY() + count * 2);
 	//start.printLn(head.data());
-	printElMenu();
-	start.restart();
-	xBox.drawBox();
-	elem[cur].onMove();
+	printElMenu(); //Печатаем элементы меню
+	start.restart(); //Устанавливаем изначальные координаты стартовой позиции
+	cDefault.reset(); //Сбрасываем настроки цвета в консоли
+	xBox.drawBox(); //Отрисовывает квадрат не относящийся к меню
+	elem[cur].onMove(); //Запускаем действие связанное с переходом на выбранный элемент меню
 }
 void Menu::redrawItem(Color color) {
 	color.colorize();
@@ -101,13 +103,13 @@ int Menu::run() {
 		char key = catchKey();
 		if (key == 'w' or key == 's') {
 			//Закрашиваем текущий элемент в стандартный цвет
-			redrawItem(cT);
+			redrawItem(cDefault);
 			//Определяем, как изменятся номер выделенного элемента
 			if (key == 'w') (cur - 1 == -1) ? cur = count - 1 : cur -= 1;
 			else if (key == 's') (cur + 1 == count) ? cur = 0 : cur += 1;
 			elem[cur].onMove();
 			//Перекрашиваем выделенный элемент
-			redrawItem(cH);
+			redrawItem(сSelected);
 		}
 		else if (key == 13) {
 			elem[cur].onEnter();
@@ -117,6 +119,14 @@ int Menu::run() {
 	return cur;
 }
 Menu& Menu::setColorText(int BG, int FG) {
-	cT.setColor(BG, FG);
+	cDefault.setColor(BG, FG);
+	return *this;
+}
+Menu& Menu::setColorBox(int c1, int c2) {
+	xBox.setColorBoard(c1, c2);
+	return *this;
+}
+Menu& Menu::setColorBox(int c1) {
+	xBox.setColorBoard(c1);
 	return *this;
 }

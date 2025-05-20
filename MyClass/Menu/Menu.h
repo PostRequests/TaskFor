@@ -16,8 +16,8 @@ private:
 	int count;//Количество всех элементов
 	int width;//Ширина меню
 	bool visible = false;//Отображает видимость меню на экране
-	Color cH;//Цвет выделения
-	Color cT;//Основной цвет меню
+	Color сSelected;//Цвет выделения пункта меню
+	Color cDefault;//Основной цвет меню
 	std::string head;//Заголовок меню
 	std::vector<MenuItem> elem;//Элемент пункта меню
 	Box xBox;//Область отрисовки поля ввода
@@ -38,11 +38,11 @@ private:
 	//Очищаем меню с экрана
 	void hide() {  }
 public:
-	Menu() :start(2, 2), cur(0), count(0), width(0), head() {  cH.setColor(RedBG); }
+	Menu() :start(2, 2), cur(0), count(0), width(0), head() {  сSelected.setColor(RedBG); }
 	Menu(int x, int y, int cur, int count, int width, std::string h)
 		: start(x + 1 , y + 1), cur(0), count(0), width(0)	{
 		setHead(h);
-		cH.setColor(RedBG);
+		сSelected.setColor(RedBG);
 	}
 	Menu(int x, int y, std::string h) :Menu(x, y, 0, 0, 0, h) {}
 
@@ -84,6 +84,19 @@ public:
 	 * @return Ссылка на текущий объект Menu для цепочки вызовов
 	 */
 	Menu& setBox(int x, int y, int x2, int y2);
+	/**
+	 * @brief Устанавливает цвет бокса
+	 * @param c1 цвет 1
+	 * @param c2 цвет 2
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
+	Menu& setColorBox(int c1, int c2);
+	/**
+	 * @brief Устанавливает цвет бокса
+	 * @param c1 цвет 1
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
+	Menu& setColorBox(int c1);
 	/**
 	 * @brief Задаёт область отрисовки меню через две позиции: начальную и конечную.
 	 * @param s - Начальная позиция (левый верхний угол)

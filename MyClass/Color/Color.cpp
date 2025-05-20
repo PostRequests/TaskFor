@@ -1,9 +1,9 @@
 #include "Color.h"
 Color& Color::setColor(int c) {
-	if (c == FG || c == BG) return *this; //Если цвет уже установлен, ничего не делаем
-	if (c >= BlackFG || c <= WhiteFG) //Если цвет в диапазоне цветов текста, устанавливаем цвет текста
+	if (c == BG || c == FG) return *this;
+	if (c >= BlackFG && c <= WhiteFG) //Если цвет в диапазоне цветов текста, устанавливаем цвет текста
 		FG = c;
-	else if (c >= BlackBG || c <= WhiteBG)//Если цвет в диапазоне цветов фона, устанавливаем цвет фона
+	else if (c >= BlackBG && c <= WhiteBG)//Если цвет в диапазоне цветов фона, устанавливаем цвет фона
 		BG = c;
 	else
 		throw std::exception("Цвет вне диапазона!");

@@ -3,6 +3,8 @@
 void Task::run() {
 	Menu m;
 	Position e;
+	m.setColorText(RedBG, GreenFG)
+		.setColorBox(GreenBG, RedFG);
 	e.setConsoleSize();
 	//Задание 13.1
 	m.addItem("Задание 13.1", 

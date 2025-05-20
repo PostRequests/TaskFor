@@ -43,22 +43,25 @@ void Box::drawFillBox(int xs, int ys, int xe, int ye) {
 }
 Box& Box::setColorBoard(int c) { 
     colBor.setColor(c); 
+    colT.setColor(colBor.getBG());
     return *this;
 }
 Box& Box::setColorBoard(const Color& c) {
     colBor.setColor(c); 
+    colT.setColor(colBor.getBG());
     return *this;
 }
-Box& Box::setColorBoard(int BG, int FG) { 
-    colBor.setColor(BG, FG); 
+Box& Box::setColorBoard(int ñ1, int ñ2) { 
+    colBor.setColor(ñ1, ñ2); 
+    colT.setColor(colBor.getBG());
     return *this;
 }
 Box& Box::setColorText(int c) { 
     colT.setColor(c); 
     return *this;
 }
-Box& Box::setColorText(int BG, int FG) { 
-    colT.setColor(BG, FG); 
+Box& Box::setColorText(int ñ1, int ñ2) { 
+    colT.setColor(ñ1, ñ2); 
     return *this;
 }
 Box& Box::setColorText(const Color& c) {
@@ -130,7 +133,7 @@ Box& Box::cls() {
     colT.reset();
     return *this;
 }
-Box& Box::clear() {
+Box& Box::hide() {
     drawFillBox(start, end);
     return *this;
 }
