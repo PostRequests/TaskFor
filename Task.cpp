@@ -1,4 +1,5 @@
 #include "Task.h"
+#include "IntVector.h"
 void Task::run() {
 	Menu m;
 	Position e;
@@ -36,6 +37,7 @@ void Task::run() {
 				num.push_back(rand() % 10);
 			m.printBox("Вектор : " + toStr(num) + "\n");
 			int summ = 0;
+			//Лямбда по поиску суммы вектора
 			[&num, &summ]() {
 				for (const int n : num)
 					summ += n;
@@ -50,12 +52,13 @@ void Task::run() {
 	//Задание 13.3
 	m.addItem("Задание 13.3",
 		[&m] {
-			m.clsBox();
-			std::string s1, s2;
+			m.clsBox();// Очищаем поле вывода
+			std::string s1, s2;// создаем 2 объекта строки
 			m.printBox("Введите первую строку : \n");
-			std::getline(std::cin, s1);
+			std::getline(std::cin, s1); 
 			m.printBox("Введите вторую строку : \n");
 			std::getline(std::cin, s2);
+			//Лямбда по сравнению строк
 			[&s1, &s2, &m]() {
 				if(s1 == s2)
 					m.printBox("Строки одинаковые");
@@ -71,7 +74,13 @@ void Task::run() {
 	//Задание 13.4
 	m.addItem("Задание 13.4",
 		[&m] {
-			m.clsBox();
+			IntVector nums; //Создаем объект класс хранения ряда чисел
+			for (int i = 0; i < 5; i++)//Заполняем вектор 5 случайными числами от 0 до 9
+				nums.push_back(rand() % 10);
+			m.clsBox()// Очищаем поле вывода
+				.printBox("Вектор : " + nums.toStr() + "\n");
+			int middle = nums.middle();//Вычисляем среднее значение через метод класса
+			m.printBox("Среднее значение массива: " + std::to_string(middle));//Выводим результат
 		},
 		[&m] {
 			m.clsBox()
@@ -81,7 +90,13 @@ void Task::run() {
 	//Задание 13.5
 	m.addItem("Задание 13.5",
 		[&m] {
-			m.clsBox();
+			m.clsBox();//Очищаем область вывода
+			std::vector<int> num;//Создаем пустой вектор для хранения целых чисел
+			[&num] {// Вложенная лямбда захватывает `num` по ссылке
+				for (int i = 0; i < 20; i++)// Генерируем 20 случайных чисел
+					num.push_back(1 + rand() % 10); // Добавляем в вектор число от 1 до 10
+				}(); //() - выполняет заполнение вектора
+			m.printBox("Сгенерирован случайный вектор : \n" + toStr(num));
 		},
 		[&m] {
 			m.clsBox()
@@ -98,7 +113,7 @@ std::string Task::toStr(std::vector<T>& v) {
 	std::string r;
 	r += "[";
 	for (int i = 0; i < v.size(); i++)
-		r += std::to_string(v[i]) + ((i < 9) ? ", " : "");
+		r += std::to_string(v[i]) + ((i < v.size() - 1) ? ", " : "");
 	r += "]";
 	return r;
 }

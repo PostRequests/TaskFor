@@ -51,6 +51,9 @@
     <ClCompile Include="MyError.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
+    <ClCompile Include="IntVector.cpp">
+      <Filter>Исходные файлы</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="MyClass\Box\Box.h">
@@ -78,6 +81,9 @@
       <Filter>Исходные файлы\MyClass\Menu</Filter>
     </ClInclude>
     <ClInclude Include="MyError.h">
+      <Filter>Файлы заголовков</Filter>
+    </ClInclude>
+    <ClInclude Include="IntVector.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
