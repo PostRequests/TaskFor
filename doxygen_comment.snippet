@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+  <CodeSnippet Format="1.0.0">
+    <Header>
+      <Title>Doxygen comment</Title>
+      <Shortcut>doc</Shortcut>
+      <Description>Шаблон комментария в стиле Doxygen</Description>
+      <Author>Твой ник</Author>
+    </Header>
+    <Snippet>
+      <Declarations>
+        <Literal>
+          <ID>description</ID>
+          <ToolTip>Краткое описание</ToolTip>
+          <Default>Краткое описание</Default>
+        </Literal>
+        <Literal>
+          <ID>param</ID>
+          <ToolTip>Параметр функции</ToolTip>
+          <Default>([тип] [имя])</Default>
+        </Literal>
+        <Literal>
+          <ID>returns</ID>
+          <ToolTip>Возвращаемое значение</ToolTip>
+          <Default>описание</Default>
+        </Literal>
+      </Declarations>
+      <Code Language="cpp"><![CDATA[/**
+ * @brief $description$
+ * $param$
+ * @return $returns$
+ */]]>
+      </Code>
+    </Snippet>
+  </CodeSnippet>
+</CodeSnippets>

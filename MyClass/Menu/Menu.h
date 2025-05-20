@@ -19,12 +19,15 @@ private:
 	Color cH;//Цвет выделения
 	Color cT;//Основной цвет меню
 	std::string head;//Заголовок меню
-	std::vector<MenuItem> elem;
-	Box xBox;
+	std::vector<MenuItem> elem;//Элемент пункта меню
+	Box xBox;//Область отрисовки поля ввода
 
 	
 
-	//Устанавливаем максимальную ширину меню
+	/**
+	 * @brief Рассчитывает ширину меню, применяется при добавлении нового пункта меню
+	 * @param s Текст пункта меню, относительно которого рассчитывается максимальный размер
+	 */
 	inline void calcWidth(std::string s) { width = ( (width>(int)s.length() + 3))? width: (int)s.length() + 2; }
 	//Печатаем элементы меню
 	void printElMenu();
@@ -39,25 +42,81 @@ public:
 	Menu(int x, int y, int cur, int count, int width, std::string h)
 		: start(x + 1 , y + 1), cur(0), count(0), width(0)	{
 		setHead(h);
-		cH.setBG(RedBG);
+		cH.setColor(RedBG);
 	}
 	Menu(int x, int y, std::string h) :Menu(x, y, 0, 0, 0, h) {}
 
 	//Устанавливаем основной цвет меню
+	/**
+	 * @brief устанавливает 2 цвета меню, фона и цвета текста
+	 * @param BG цвет заднего фона текста
+	 * @param FG цвет текста
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& setColorText(int BG, int FG);
-	//Добавляем элемент меню к меню
-	//inline Menu& addItem(const std::string& head) { return addItem(head, nullptr); }
+	/**
+	 * @brief Добавляет новы пункт меню с заголовком но без действия при нажатии
+	 * @param head текст заголовка меню
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
+	inline Menu& addItem(const std::string& head) { return addItem(head, nullptr); }
+	/**
+	 * @brief Добавляет новый пункт меню с заголовком и действием при нажатии Enter.
+	 * @param head   - Заголовок пункта меню
+	 * @param fEnter - Функция, которая выполняется при выборе этого пункта
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& addItem(const std::string& head, const std::function<void()>& fEnter);
+	/**
+	 * @brief Добавляет новый пункт меню с заголовком, действием при Enter и действием при переходе курсора.
+	 * @param head  - Заголовок пункта меню
+	 * @param fEnter - Функция, которая выполняется при нажатии Enter
+	 * @param fmove - Функция, которая выполняется при переходе к пункту
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& addItem(const std::string& head, const std::function<void()>& fEnter, const std::function<void()>& fmove);
+	/**
+	 * @brief Задаёт координаты прямоугольной области (рамки), в которой будет отображаться меню.
+	 * @param x   - Координата X левого верхнего угла
+	 * @param y   - Координата Y левого верхнего угла
+	 * @param x2  - Координата X правого нижнего угла
+	 * @param y2  - Координата Y правого нижнего угла
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& setBox(int x, int y, int x2, int y2);
+	/**
+	 * @brief Задаёт область отрисовки меню через две позиции: начальную и конечную.
+	 * @param s - Начальная позиция (левый верхний угол)
+	 * @param e - Конечная позиция (правый нижний угол)
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& setBox(Position& s, Position& e);
+	/**
+	 * @brief Выводит заданный текст в текущей области меню (внутри рамки).
+	 * @param text - Текст для вывода
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& printBox(const std::string& text);
+	/**
+	 * @brief Очищает область дополнительного текстового блока
+	 */
 	Menu& clsBox();
-	//Устанавливаем шапку меню
+	/**
+	 * @brief Устанавливает шапку меню
+	 * @param h - Текст для установки шапки
+	 * @return Ссылка на текущий объект Menu для цепочки вызовов
+	 */
 	Menu& setHead(std::string h);
-	//Запуск меню, возвращает выбранный элемент меню
+	/**
+	 * @brief Запускает меню
+	 * @return возвращает выбранный элемент меню
+	 */
 	int run();
-	inline int getWidth() { return width; }
+	/**
+	 * @brief Позволяет получить ширину поля меню
+	 * @return Возвращает ширину меню
+	*/
+	inline int getWidth() { return width + 3; }
 
 	
 };

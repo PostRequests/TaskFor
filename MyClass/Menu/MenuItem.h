@@ -19,7 +19,11 @@ public:
         const std::function<void()>& m)
         : head(n),  enter(e), move(m){
     }
-
+    /**
+     * @brief Краткое описание
+     * ([тип] [имя])
+     * @return описание
+     */
     inline void setHead(const std::string& h) { head = h; }
     inline void setEnter(const std::function<void()>& e) { enter = e; };
     inline void setMove(const std::function<void()>& m) { move = m; };

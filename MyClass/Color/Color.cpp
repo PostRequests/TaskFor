@@ -1,19 +1,17 @@
 #include "Color.h"
-Color& Color::setFG(int FG){
-	if (this->FG == FG) return *this;
-	if (FG < BlackFG || FG > WhiteFG) return *this;
-	this->FG = FG;
+Color& Color::setColor(int c) {
+	if (c == FG || c == BG) return *this; //Если цвет уже установлен, ничего не делаем
+	if (c >= BlackFG || c <= WhiteFG) //Если цвет в диапазоне цветов текста, устанавливаем цвет текста
+		FG = c;
+	else if (c >= BlackBG || c <= WhiteBG)//Если цвет в диапазоне цветов фона, устанавливаем цвет фона
+		BG = c;
+	else
+		throw std::exception("Цвет вне диапазона!");
 	return *this;
 }
-Color& Color::setBG(int BG) {
-	if (this->BG == BG) return *this;
-	if (BG < BlackBG || BG > WhiteBG) return *this;
-	this->BG = BG;
-	return *this;
-}
-Color& Color::setColor(int BG, int FG) {
-	setBG(BG);
-	return setFG(FG);
+Color& Color::setColor(int с1, int с2) {
+	setColor(с1);
+	return setColor(с2);
 }
 Color& Color::setColor(const Color& c) {
 	if (this->BG == c.BG && this->FG == c.FG) return *this;
