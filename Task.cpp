@@ -83,7 +83,7 @@ void Task::run() {
 			C.insert(C.end(), B.begin(), B.end());//Добавляем к С все элементы В
 			std::sort(C.begin(), C.end()); //Сортируем в порядке возрастания
 			auto last = std::unique(C.begin(), C.end());//Перемещаем дубликаты в конец, получаем итератор конца
-			C.erase(last, C.end());//Обрезаем конеец
+			C.erase(last, C.end());//Обрезаем конец
 			m.printBox("\nМассив C :\n" + toStr(C));
 		},
 		[&m] {
@@ -94,7 +94,29 @@ void Task::run() {
 	//Задание 14.5
 	m.addItem("Задание 14.5",
 		[&m] {
-
+			std::string t; //Строка ввода данных
+			m.clsBox()// Очищаем поле вывода
+				.printBox("\nВведите размер контейнера A :");
+			std::getline(std::cin, t);
+			//Переводим строку в число
+			int rA = std::stoi(t); //Размерность контейнера А 
+			std::vector<int> A; //Заводим переменную
+			A = randVec(-10, 10, rA);//Заполняем первый массив
+			m.printBox("\nМассив A :\n" + toStr(A));
+			m.printBox("\nКакие числа удалить?:\n");
+			Menu menu(m.getBox().getCurPoint().nextLine()); //Подменю для выбора четности значений
+			menu.addItem("Четные", [&A]() {
+				A.erase(std::remove_if(A.begin(), A.end(),
+					[](int x) { return x % 2 == 0; }),
+					A.end());
+				})
+				.addItem("Не четные", [&A]() {
+				A.erase(std::remove_if(A.begin(), A.end(),
+					[](int x) { return x % 2 != 0; }),
+					A.end());
+					});
+			menu.run(true);
+			m.printBox("\n\n\n\n\n\nМассив A :\n" + toStr(A));
 		},
 		[&m] {
 			m.clsBox()

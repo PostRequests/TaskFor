@@ -52,8 +52,9 @@ Position& Position::setConsoleSize() {
 	}
 	return *this;
 }
-Position& Position::nextLine() {
-	y++;
+Position& Position::nextLine(int line) {
+	for (int i = 0; i < line; i++)
+		y++;
 	x = startX;
 	return *this;
 }

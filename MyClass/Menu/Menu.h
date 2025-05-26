@@ -21,7 +21,7 @@ private:
 	std::string head;//Заголовок меню
 	std::vector<MenuItem> elem;//Элемент пункта меню
 	Box xBox;//Область отрисовки поля ввода
-
+	bool boxVisible;
 	
 
 	/**
@@ -45,6 +45,7 @@ public:
 		сSelected.setColor(RedBG);
 	}
 	Menu(int x, int y, std::string h) :Menu(x, y, 0, 0, 0, h) {}
+	Menu(Position p) :Menu(p.getMinX(), p.getMinY(), 0, 0, 0, "") {}
 
 	//Устанавливаем основной цвет меню
 	/**
@@ -122,14 +123,19 @@ public:
 	Menu& setHead(std::string h);
 	/**
 	 * @brief Запускает меню
+	 * @param r - закрывается ли меню после ввода
 	 * @return возвращает выбранный элемент меню
 	 */
-	int run();
+	int run(bool r = false);
 	/**
 	 * @brief Позволяет получить ширину поля меню
 	 * @return Возвращает ширину меню
 	*/
 	inline int getWidth() { return width + 3; }
-
+	/**
+	 * @brief Описание функции
+	 * @return Возвращает элемент класса Box
+	 */
+	inline Box& getBox() { return xBox; }
 	
 };

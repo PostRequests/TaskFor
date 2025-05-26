@@ -35,7 +35,7 @@ public:
 	Box(Position s, Position e) :start(s), end(e), cur(s.getX() + 1, s.getY() + 1) {}
 	Box(Position s, int x, int y) :start(s), end(x,y), cur(s.getX() + 1, s.getY() + 1) {}
 	Box(int x, int y, Position e) :start(x,y), end(e), cur(x + 1, y + 1) {}
-	~Box() { hide(); }
+	//~Box() { hide(); }
 	/**
 	 * @brief Возвращает строку с заданными параметрами
 	 * @param s длинна строки
@@ -155,6 +155,11 @@ public:
 	 * @return Ссылка на текущий объект Box для цепочки вызовов
 	 */
 	Box& hide();
+	/**
+	 * @brief возвращает текущую позицию курсора в боксе
+	 * @return возвращает текущую позицию курсора в боксе
+	 */
+	inline Position& getCurPoint() { return cur; }
 };
 
 

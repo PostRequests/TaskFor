@@ -35,9 +35,10 @@ public:
 	/// ѕечатает на экране текущие координаты в указанном месте
 	Position& show(int x, int y);
 	/// ƒобавл€ет у + 1, без перехода
-	Position& nextLine();
+	Position& nextLine(int line = 1);
 	/// ƒобавл€ет у + 1, без перехода
 	inline void operator++() { nextLine(); }
+	inline bool operator==(Position a) { return ((a.x == x && a.y == y) ? true : false); }
 	/// ѕереходит по сохраненным координатам и печатает текст
 	Position& print(const std::string& s);
 	/// ѕереходит по сохраненным координатам и печатает текст, в конце переход на следующий уровень

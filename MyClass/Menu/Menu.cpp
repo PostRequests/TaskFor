@@ -26,6 +26,7 @@ char catchKey() {
 	}
 }
 Menu& Menu::setBox(int x, int y, int x2, int y2) { 
+	boxVisible = true;
 	xBox.setCoordinate(x, y, x2, y2); 
 	return *this;
 }
@@ -66,11 +67,11 @@ Menu& Menu::setHead(std::string h) {
 }
 void Menu::printElMenu() {
 	for (int i = 0; i < count; i++) {
-		start.setY(start.getX()  + i * 2)
+		start.setY(start.getMinY()  + i * 2)
 			.printLn(elem[i].getHead());
 	}
 	сSelected.colorize();
-	start.setY(start.getX() + cur)
+	start.setY(start.getMinY() + cur)
 		.print(elem[cur].getHead());
 	сSelected.reset();
 	start.restart();
@@ -85,8 +86,9 @@ void Menu::show() {
 	//start.printLn(head.data());
 	printElMenu(); //Печатаем элементы меню
 	start.restart(); //Устанавливаем изначальные координаты стартовой позиции
-	cDefault.reset(); //Сбрасываем настроки цвета в консоли
-	xBox.drawBox(); //Отрисовывает квадрат не относящийся к меню
+	cDefault.reset(); //Сбрасываем настройки цвета в консоли
+	if(boxVisible) 
+		xBox.drawBox(); //Отрисовывает квадрат не относящийся к меню
 	elem[cur].onMove(); //Запускаем действие связанное с переходом на выбранный элемент меню
 }
 void Menu::redrawItem(Color color) {
@@ -95,7 +97,7 @@ void Menu::redrawItem(Color color) {
 		.print(elem[cur].getHead());
 	start.restart();
 }
-int Menu::run() {
+int Menu::run(bool r) {
 	if (!count)
 		throw std::exception("Меню не содержит ни одного элемента");
 	show();
@@ -113,7 +115,8 @@ int Menu::run() {
 		}
 		else if (key == 13) {
 			elem[cur].onEnter();
-			//return cur;
+			if(r)
+				return cur;
 		}
 	}
 	return cur;
