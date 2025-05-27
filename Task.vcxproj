@@ -129,6 +129,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="File.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MyClass\Box\Box.cpp" />
     <ClCompile Include="MyClass\Color\Color.cpp" />
@@ -138,9 +139,11 @@
     <ClCompile Include="MyClass\Menu\MenuItem.cpp" />
     <ClCompile Include="MyClass\Position\Position.cpp" />
     <ClCompile Include="MyError.cpp" />
+    <ClCompile Include="RusEncryption.cpp" />
     <ClCompile Include="Task.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="File.h" />
     <ClInclude Include="MyClass\Box\Box.h" />
     <ClInclude Include="MyClass\Color\Color.h" />
     <ClInclude Include="MyClass\KeyBoard\KeyBoard.h" />
@@ -149,6 +152,7 @@
     <ClInclude Include="MyClass\Menu\MenuItem.h" />
     <ClInclude Include="MyClass\Position\Position.h" />
     <ClInclude Include="MyError.h" />
+    <ClInclude Include="RusEncryption.h" />
     <ClInclude Include="Task.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

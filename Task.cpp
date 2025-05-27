@@ -1,128 +1,96 @@
 #include "Task.h"
+
 void Task::run() {
 	Menu m;
 	Position e;
 	m.setColorText(RedBG, GreenFG)
 		.setColorBox(GreenBG, RedFG);
 	e.setConsoleSize();
-	//Заполняем изначальные значения контейнеров
-	auto fillCon = [&m](std::vector<int>& A, std::vector<int>& B) {
-		std::string t; //Строка ввода данных
-		m.clsBox()// Очищаем поле вывода
-			.printBox("\nВведите размер контейнера A :");
-		std::getline(std::cin, t);
-		//Переводим строку в число
-		int rA = std::stoi(t); //Размерность контейнера А 
-		m.printBox("\nВведите размер контейнера B :");
-		std::getline(std::cin, t);
-		int rB = std::stoi(t); //Размерность контейнера А 
-		A = randVec(-10, 10, rA);//Заполняем первый массив
-		B = randVec(-10, 10, rB);//Заполняем второй массив
-		//Уменшаем размеры контейнеров для экономии памяти
-		A.capacity();
-		B.capacity();
-		m.printBox("\nМассив А :\n" + toStr(A));
-		m.printBox("\nМассив B :\n" + toStr(B));
-		};
-	//Задание 14.1
-	m.addItem("Задание 14.1", 
-		[&m, &fillCon] {
-			std::vector<int> A, B; //Контейнеры для заполнения
-			fillCon(A, B);
-			std::set<int> C; //Итоговый контейнер не дает добавлять повторяющиеся значения
-			// Отбор элементов из A, которых нет в B
-			std::copy_if(A.begin(), A.end(), std::inserter(C, C.end()),
-				[&B](int x) {
-					return std::find(B.begin(), B.end(), x) == B.end(); 
+	
+	//Задание 15.1
+	m.addItem("Задание 15.1", 
+		[&m] {
+			m.clsBox()
+				.printBox("Введите полный путь к файлу \n:\n");
+			std::string path;//Путь к файлу
+			std::getline(std::cin, path);
+			m.printBox("Укажите смещение по шифрованию \n:\n");
+			std::string shift;
+			std::getline(std::cin, shift);
+			RusEncryption enc(std::stoi(shift)); //Генерируем шифратор
+			std::string newPath;//новый путь к фалу
+			size_t p = path.find_last_of(".");
+			if (p != std::string::npos)
+				newPath = path.substr(0,p) + "_encode.txt";//Обрезаем все последнюю точку
+			std::string data = File::loadFile(path);
+			std::string eData = enc.encryption(data);
+			File::saveFile(newPath, eData);
+			m.printBox("Файл успешно сохранен по адресу \n:" + newPath);
+			
+			
+
+			
+		},
+		[&m] {
+			m.clsBox()
+				.printBox("Задание 1: написать программу, которая указанный пользователем файл шифрует алгоритмом Цезаря и сохраняет с новым именем: «старое имя_encode.txt».\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
+		}
+	);
+	//Задание 15.2
+	m.addItem("Задание 15.2",
+		[&m] {
+			m.clsBox()
+				.printBox("Введите полный путь к файлу \n:\n");
+			std::string path;//Путь к файлу
+			std::getline(std::cin, path);
+			m.printBox("Укажите сдвиг по шифрованию \n:\n");
+			std::string shift;
+			std::getline(std::cin, shift);
+			RusEncryption enc(std::stoi(shift)); //Генерируем шифратор
+			std::string newPath;//новый путь к фалу
+			size_t p = path.find_last_of("_");
+			if (p != std::string::npos)
+				newPath = path.substr(0, p) + "_decode.txt";//Обрезаем все последнюю точку
+			std::string data = File::loadFile(path);
+			std::string eData = enc.decryption(data);
+			File::saveFile(newPath, eData);
+			m.printBox("Файл успешно сохранен по адресу \n:" + newPath);
+		},
+		[&m] {
+			m.clsBox()
+				.printBox("Задание 2: написать программу, которая указанный пользователем файл дешифрует алгоритмом Цезаря и сохраняет с новым именем: «старое имя_decode.txt».\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
+		}
+	);
+	//Задание 15.3
+	m.addItem("Задание 15.3",
+		[&m] {
+			m.clsBox()
+				.printBox("Введите N:\n");
+			std::string N;//Размерность N
+			std::getline(std::cin, N);// Считываем размерность
+			const std::string path = "1.txt"; //Путь к файлу
+			std::string text;
+			std::vector<int> num = randVec(1, 4048, std::stoi(N)); //Создаем вектор случайных чисел
+			std::for_each(num.begin(), num.end(), //Сохраняем вектор в строку
+				[&text](int n){
+					text += std::to_string(n);
+			}
+			);
+			File::saveFile(path, text);//Сохраняем строку в файл
+			std::map<char, int> chStat = File::loadFileToMap(path); //загружаем файл в map
+			m.printBox("Количество символов в файле:\n");
+			std::for_each(chStat.begin(), chStat.end(), //Выводим map на экран
+				[&m](auto p) {
+					m.printBox(std::string(1, p.first) + " = "
+						+ std::to_string(p.second) + "\n");
 				});
-			m.printBox("\nМассив C :\n" + toStr(C));
 		},
 		[&m] {
 			m.clsBox()
-				.printBox("Задание 1: Даны два контейнера: А[M] и B[N] (M и N вводятся с клавиатуры). Контейнеры заполняются случайными числами в диапазоне [-10;10]. Необходимо создать третий минимально возможного размера, в котором нужно собрать элементы контейнера A, которые не включаются в контейнер B, без повторений.	\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
+				.printBox("Задание 3: написать программу, которая запрашивает у пользователя число N. Сохраняет в текстовый файл «1.txt» N случайных чисел в диапазоне [1;4048]. Считывает данные из файла «1.txt» посимвольно и выводит статистику какой символ сколько раз встретился в файле.\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
 		}
 	);
-	//Задание 14.2
-	m.addItem("Задание 14.2",
-		[&m, &fillCon] {
-			std::vector<int> A, B; //Контейнеры для заполнения
-			fillCon(A, B);
-			std::set<int> C; //Итоговый контейнер не дает добавлять повторяющиеся значения
-			for (int i : A) //Добавляем элементы из первого массива
-				C.insert(i);
-			for (int i : B)//Добавляем элементы из второго массива
-				C.insert(i);
-			m.printBox("\nМассив C :\n" + toStr(C));
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Задание 2: Даны два контейнера: А[M] и B[N] (M и N вводятся с клавиатуры). Контейнеры заполняются случайными числами в диапазоне [-10;10]. Необходимо создать третий минимально возможного размера, в котором нужно собрать элементы контейнеров A и B, которые не являются общими для них, без повторений.\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
-		}
-	);
-	//Задание 14.3
-	m.addItem("Задание 14.3",
-		[&m, &fillCon] {
-			std::vector<int> A, B, C; //Контейнеры для заполнения
-			fillCon(A, B);
-			C.insert(C.end(), A.begin(), A.end()); //Добавляем к С все элементы А
-			C.insert(C.end(), B.begin(), B.end());//Добавляем к С все элементы В
-			std::sort(C.begin(), C.end()); //Сортируем в порядке возрастания
-			m.printBox("\nМассив C :\n" + toStr(C));
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Задание 3: Даны два контейнера: А[M] и B[N] (M и N вводятся с клавиатуры). Контейнеры заполняются случайными числами в диапазоне [-10;10]. Необходимо создать третий минимально возможного размера, в котором нужно собрать элементы обоих контейнеров.\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
-		}
-	);
-	//Задание 14.4
-	m.addItem("Задание 14.4",
-		[&m, &fillCon] {
-			std::vector<int> A, B, C; //Контейнеры для заполнения
-			fillCon(A, B);
-			C.insert(C.end(), A.begin(), A.end()); //Добавляем к С все элементы А
-			C.insert(C.end(), B.begin(), B.end());//Добавляем к С все элементы В
-			std::sort(C.begin(), C.end()); //Сортируем в порядке возрастания
-			auto last = std::unique(C.begin(), C.end());//Перемещаем дубликаты в конец, получаем итератор конца
-			C.erase(last, C.end());//Обрезаем конец
-			m.printBox("\nМассив C :\n" + toStr(C));
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Задание 4: Даны два контейнера: А[M] и B[N] (M и N вводятся с клавиатуры). Контейнеры заполняются случайными числами в диапазоне [-10;10]. Необходимо создать третий минимально возможного размера, в котором нужно собрать общие элементы двух контейнеров без повторений.\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
-		}
-	);
-	//Задание 14.5
-	m.addItem("Задание 14.5",
-		[&m] {
-			std::string t; //Строка ввода данных
-			m.clsBox()// Очищаем поле вывода
-				.printBox("\nВведите размер контейнера A :");
-			std::getline(std::cin, t);
-			//Переводим строку в число
-			int rA = std::stoi(t); //Размерность контейнера А 
-			std::vector<int> A; //Заводим переменную
-			A = randVec(-10, 10, rA);//Заполняем первый массив
-			m.printBox("\nМассив A :\n" + toStr(A));
-			m.printBox("\nКакие числа удалить?:\n");
-			Menu menu(m.getBox().getCurPoint().nextLine()); //Подменю для выбора четности значений
-			menu.addItem("Четные", [&A]() {
-				A.erase(std::remove_if(A.begin(), A.end(),
-					[](int x) { return x % 2 == 0; }),
-					A.end());
-				})
-				.addItem("Не четные", [&A]() {
-				A.erase(std::remove_if(A.begin(), A.end(),
-					[](int x) { return x % 2 != 0; }),
-					A.end());
-					});
-			menu.run(true);
-			m.printBox("\n\n\n\n\n\nМассив A :\n" + toStr(A));
-		},
-		[&m] {
-			m.clsBox()
-				.printBox("Задание 5: Дан контейнер: А[M] (M вводится с клавиатуры). Необходимо удалить из контейнера четные или нечетные значения. Пользователь вводит данные в конейнер, а также с помощью меню решает, что нужно удалить.\nРешить задачу необходимо используя инструменты библиотеки <algorithm>, ямбда выражения, контейнеры(коллекции) из библиотеки std.");
-		}
-	);
+	
 	
 	m.addItem("Выход", [] {exit(0); }, [&m] {m.clsBox().printBox("Выход"); });
 	m.setBox(m.getWidth() + 3, 1, e.getX(), e.getY());
@@ -147,6 +115,8 @@ std::string Task::toStr(const std::set<T>& v) {
 	r += "]";
 	return r;
 }
+
+
 
 std::vector<int> Task::randVec( int min, int max, int size) {
 	std::vector<int> v;

@@ -2,6 +2,10 @@
 #include "MyClass/Menu/Menu.h"
 #include <algorithm>
 #include <set>
+#include <fstream>
+#include <sstream>
+#include "File.h"
+#include "RusEncryption.h"
 class Task
 {
 private:
